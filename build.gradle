@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+}
+
+group 'org.akka.learner'
+
+sourceCompatibility = 1.8
+
+ext {
+    mapstructVersion = "1.3.1.Final"
+    akkaVersion = "2.5.25"
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
+
+    implementation group: 'com.typesafe.akka', name: 'akka-actor_2.12', version: akkaVersion
+    implementation group: 'com.typesafe.akka', name: 'akka-remote_2.12', version: akkaVersion
+    implementation group: 'com.typesafe.akka', name: 'akka-cluster_2.12', version: akkaVersion
+    implementation group: 'com.typesafe.akka', name: 'akka-stream_2.12', version: akkaVersion
+    implementation group: 'com.typesafe.akka', name: 'akka-discovery_2.12', version: akkaVersion
+
+    implementation group: 'com.lightbend.akka.management', name: 'akka-management_2.12', version: '1.0.3'
+    compile group: 'com.lightbend.akka.management', name: 'akka-management-cluster-http_2.12', version: '1.0.3'
+
+    compile group: 'com.lightbend.akka.management', name: 'akka-management-cluster-bootstrap_2.12', version: '1.0.3'
+    compile group: 'com.lightbend.akka.discovery', name: 'akka-discovery-kubernetes-api_2.12', version: '1.0.3'
+
+
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
