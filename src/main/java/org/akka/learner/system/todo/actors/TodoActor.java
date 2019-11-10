@@ -1,16 +1,17 @@
-package org.akka.learner.todo;
+package org.akka.learner.system.todo.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.Props;
+import akka.event.Logging;
+import akka.event.LoggingAdapter;
 import akka.stream.ActorMaterializer;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
-@Slf4j
 public class TodoActor extends AbstractActor {
-
+    LoggingAdapter log = Logging.getLogger(getContext().getSystem(), this);
 
     private ActorMaterializer mat;
 

@@ -1,4 +1,4 @@
-package org.akka.learner.todo;
+package org.akka.learner.system.todo.actors;
 
 import akka.actor.AbstractActor;
 import akka.actor.ActorRef;
@@ -23,8 +23,6 @@ public class FrontActor extends AbstractActor {
     @Override
     public void preStart() throws Exception {
         super.preStart();
-
-
         mat = ActorMaterializer.create(getContext().getSystem());
     }
 

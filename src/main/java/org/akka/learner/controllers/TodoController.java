@@ -3,11 +3,12 @@ package org.akka.learner.controllers;
 import akka.actor.ActorRef;
 import akka.actor.ActorSelection;
 import akka.actor.ActorSystem;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import static org.akka.learner.todo.FrontActor.BATCH_CREATE;
+import static org.akka.learner.system.todo.actors.FrontActor.BATCH_CREATE;
 
 
 @RestController
@@ -15,7 +16,7 @@ import static org.akka.learner.todo.FrontActor.BATCH_CREATE;
 public class TodoController {
     private ActorSelection frontActor;
 
-    public TodoController(ActorSystem actorSystem) {
+    public TodoController(@Qualifier("taskSystem") ActorSystem actorSystem) {
         frontActor = actorSystem.actorSelection("/user/front");
     }
 
